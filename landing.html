@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Softcord ✨| V1.1</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            background-color: #0f141c;
+            overflow: hidden;
+            position: relative;
+            font-family: Arial, sans-serif;
+        }
+
+        .nav-panel {
+            position: fixed; /* Fixed positioning to keep it at the top */
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: #0c0c0c; /* Adjust the color to match your theme */
+            padding: 10px 0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            z-index: 1000; /* High z-index to keep it above other content */
+        }
+
+        .nav-button {
+            color: #ffffff;
+            background: none;
+            border: none;
+            font-size: 1em;
+            padding: 8px 16px;
+            margin: 0 10px;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .nav-button:hover {
+            color: #7289da; /* Discord brand color for hover state */
+        }
+
+        .nav-button.donate {
+            color: #ffffff;
+            background-color: #7289da; /* Discord brand color for Donate button */
+            border-radius: 4px;
+        }
+
+        .nav-button.donate:hover {
+            background-color: #5b6dad;
+        }
+
+        #title {
+            font-size: 6em;
+            color: #fff;
+            font-weight: bold;
+            position: absolute;
+            top: 50%; /* Centered in view vertically */
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 2;
+        }
+
+        #subtitle {
+            font-size: 2em;
+            color: #fff;
+            position: absolute;
+            top: calc(50% + 70px); /* Below the title */
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+        }
+
+        .blob-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .blob {
+            position: absolute;
+            border-radius: 50%;
+            box-shadow: 0 0 15px 5px;
+            animation: blurAnimation 5s infinite, fadeInOut 5s infinite;
+        }
+
+                /* Team Section Styles */
+                .team-section {
+            width: 100%;
+            text-align: center;
+            padding: 50px 0;
+        }
+
+        .team-title {
+            font-size: 3em;
+            color: #fff;
+            margin-bottom: 20px;
+        }
+
+        .team-member {
+            display: inline-block;
+            margin: 0 20px;
+            text-align: center;
+        }
+
+        .team-member img {
+            width: 150px; /* Adjust as needed */
+            height: 150px; /* Adjust as needed */
+            border-radius: 50%; /* Circular images */
+            margin-bottom: 10px;
+        }
+
+        .team-member h3 {
+            color: #fff;
+            font-size: 1.5em;
+        }
+
+        .team-member p {
+            color: #fff;
+            font-size: 1em;
+        }
+        
+        @keyframes blurAnimation {
+            0%, 100% {
+                filter: blur(5px);
+            }
+            50% {
+                filter: blur(15px);
+            }
+        }
+
+        @keyframes fadeInOut {
+            0%, 100% {
+                opacity: 0;
+            }
+            50% {
+                opacity: 0.6;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Panel -->
+    <div class="nav-panel">
+        <button class="nav-button">Download ✅</button>
+        <button class="nav-button">Support 💬</button>
+        <button class="nav-button">Plugins / Themes 🔏</button>
+        <button class="nav-button donate">Donate 💖</button>
+        <button class="nav-button">Status 📢</button>
+    </div>
+
+    <!-- Title and Subtitle -->
+    <div id="title">Softcord</div>
+    <div id="subtitle">Unofficial Discord Client</div>
+
+    <!-- Blob Container -->
+    <div class="blob-container"></div>
+
+    <!-- Blob Generation Script -->
+    <script>
+        function createBlob() {
+            const blobContainer = document.querySelector('.blob-container');
+            const blob = document.createElement('div');
+            blob.classList.add('blob');
+
+            const size = Math.random() * 100 + 50; // Blob size between 50px and 150px
+            blob.style.width = `${size}px`;
+            blob.style.height = `${size}px`;
+
+            const colors = ['#5603fc', '#000dff'];
+            const randomColor = colors[Math.floor(Math.random() * colors.length)];
+            blob.style.background = randomColor;
+
+            blob.style.top = `${Math.random() * (window.innerHeight - size)}px`;
+            blob.style.left = `${Math.random() * (window.innerWidth - size)}px`;
+
+            blobContainer.appendChild(blob); // Append the blob to the container
+
+            setTimeout(() => blob.remove(), 5000); // Remove blob after 5 seconds
+        }
+
+        setInterval(createBlob, 500); // Create a new blob every 500 milliseconds
+    </script>
+</body>
+</html>
